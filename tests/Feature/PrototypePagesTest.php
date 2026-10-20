@@ -10,7 +10,7 @@ class PrototypePagesTest extends TestCase
     {
         $pages = [
             '/' => 'A clear path to your',
-            '/demo/sign-in' => 'Sign in',
+            '/sign-in' => 'Sign in',
             '/student' => 'Student ID overview',
             '/student/application' => 'Share your details',
             '/track' => 'Track an application',
@@ -30,15 +30,23 @@ class PrototypePagesTest extends TestCase
         }
     }
 
-    public function test_tracking_page_explains_that_no_application_lookup_is_performed(): void
+    public function test_tracking_page_shows_the_registrar_contact_when_online_tracking_is_unavailable(): void
     {
         $response = $this->get('/track');
 
         $response->assertOk();
-        $response->assertSee('No search is performed or sent from this page.');
-        $response->assertSee('not the progress of an individual application.');
+        $response->assertSee('Online application status tracking is currently unavailable.');
+        $response->assertSee('Please contact the Registrar.');
+        $response->assertDontSee('tracking-number');
         $response->assertDontSee('Under review');
         $response->assertDontSee('DEMO-2026-');
+    }
+
+    public function test_previous_sign_in_url_redirects_to_the_sign_in_page(): void
+    {
+        $response = $this->get('/demo/sign-in');
+
+        $response->assertRedirect('/sign-in');
     }
 
     public function test_application_form_has_no_prefilled_student_information(): void
@@ -46,7 +54,8 @@ class PrototypePagesTest extends TestCase
         $response = $this->get('/student/application');
 
         $response->assertOk();
-        $response->assertSee('Do not enter real student information');
+        $response->assertSee('Online application submission is currently unavailable.');
+        $response->assertDontSee('Do not enter real student information');
         $response->assertDontSee('Andrea Sample Student');
         $response->assertDontSee('DEMO-2026-');
         $response->assertDontSee('andrea.demo@example.test');

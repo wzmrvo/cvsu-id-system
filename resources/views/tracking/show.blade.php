@@ -7,34 +7,19 @@
         <section class="mx-auto mt-8 max-w-3xl text-center">
             <span class="eyebrow">Application tracking</span>
             <h1 class="page-title mb-0 mt-2">Track an application</h1>
-            <p class="page-subtitle mx-auto mb-0 mt-3">Application records are not connected to this interface, so a status cannot be retrieved here.</p>
+            <p class="page-subtitle mx-auto mb-0 mt-3">Online application status tracking is currently unavailable. Contact the Registrar for an update.</p>
         </section>
 
-        <form class="surface-card mx-auto mt-6 flex max-w-3xl flex-col gap-3 p-4 sm:flex-row sm:p-5" data-tracking-form novalidate>
-            <div class="flex-1">
-                <label class="sr-only" for="tracking-number">Application reference</label>
-                <input
-                    class="form-control"
-                    id="tracking-number"
-                    type="text"
-                    maxlength="40"
-                    pattern="[A-Za-z0-9]+(-[A-Za-z0-9]+)*"
-                    placeholder="Enter an application reference"
-                    autocomplete="off"
-                    aria-describedby="tracking-help tracking-message"
-                    required
-                >
-                <p class="field-hint mb-0" id="tracking-help">Do not enter a real student number. No search is performed or sent from this page.</p>
-            </div>
-            <button class="button shrink-0 self-start sm:self-auto" type="submit">Check availability</button>
-        </form>
-        <p class="mx-auto mt-3 max-w-3xl text-sm font-semibold text-slate-600" id="tracking-message" data-tracking-message role="status" aria-live="polite" hidden></p>
+        <aside class="surface-card mx-auto mt-6 max-w-3xl rounded-xl border-l-4 border-[#c6a23a] p-5 sm:p-6" role="status">
+            <h2 class="m-0 text-base font-bold text-slate-800">Need an application update?</h2>
+            <p class="mb-0 mt-2 text-sm leading-6 text-slate-600">Please contact the Registrar. Online tracking is not available at this time.</p>
+        </aside>
 
         <section class="surface-card mx-auto mt-6 max-w-3xl p-5 sm:p-7" aria-labelledby="process-overview-heading">
             <div class="border-b border-[#edf0ed] pb-5">
-                <p class="m-0 text-[10px] font-bold uppercase tracking-[.1em] text-slate-500">Process overview</p>
-                <h2 class="mb-0 mt-1 text-xl font-bold text-slate-800" id="process-overview-heading">Typical application stages</h2>
-                <p class="mb-0 mt-2 text-xs leading-5 text-slate-500">These are general workflow stages, not the progress of an individual application.</p>
+                <p class="m-0 text-[10px] font-bold uppercase tracking-[.1em] text-slate-500">Application process</p>
+                <h2 class="mb-0 mt-1 text-xl font-bold text-slate-800" id="process-overview-heading">What to expect</h2>
+                <p class="mb-0 mt-2 text-xs leading-5 text-slate-500">For an update on your application, contact the Registrar.</p>
             </div>
 
             <ol class="mt-6 grid gap-4 sm:grid-cols-2">
@@ -53,11 +38,8 @@
             </ol>
 
             <p class="mb-0 mt-5 rounded-lg border border-[#eadba7] bg-[#fffaf0] p-3 text-xs leading-5 text-[#66531c]">
-                This system is not connected to student records, appointment scheduling, or the university’s separate ID production software, signature-capture device, and printer.
+                ID production and signature capture remain separate Registrar processes using the university’s existing tools.
             </p>
         </section>
-        <div class="mx-auto mt-5 max-w-3xl text-center">
-            <a class="text-xs font-semibold text-[#164b32] no-underline hover:underline" href="{{ route('demo.sign-in') }}">Sign-in availability and account access →</a>
-        </div>
     </div>
 @endsection

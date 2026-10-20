@@ -44,5 +44,5 @@
             </a>
         @endforeach
     </nav>
-    <p class="workspace-sidebar__note">Workspace preview. Sign-in, access permissions, and saved records are not enabled.</p>
+    <p class="workspace-sidebar__note">Sign-in, role permissions, and saved records are currently unavailable.</p>
 </aside>

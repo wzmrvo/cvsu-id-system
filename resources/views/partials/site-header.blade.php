@@ -20,7 +20,7 @@
             <a class="nav-link" href="{{ route('home') }}#requirements" data-site-link>Requirements</a>
             <a class="nav-link" href="{{ route('student.application.create') }}" data-site-link>Apply for ID</a>
             <a class="nav-link" href="{{ route('tracking.show') }}" data-site-link>Track application</a>
-            <a class="nav-cta" href="{{ route('demo.sign-in') }}" data-site-link>Sign-in information</a>
+            <a class="nav-cta" href="{{ route('sign-in') }}" data-site-link>Sign in</a>
         </nav>
     </div>
 </header>

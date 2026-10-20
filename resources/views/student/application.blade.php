@@ -9,7 +9,7 @@
             <div class="mt-5">
                 <span class="eyebrow">Student ID application</span>
                 <h1 class="page-title mb-0 mt-2">Share your details</h1>
-                <p class="page-subtitle mb-0 mt-2">Form review is only available in this browser. Do not enter real student information; nothing is submitted or stored.</p>
+                <p class="page-subtitle mb-0 mt-2">Online application submission is currently unavailable. Please contact the Registrar for application requirements.</p>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
                             <div class="photo-preview" data-photo-preview aria-label="No photo selected">Photo preview</div>
                             <div class="min-w-0 flex-1">
                                 <input class="form-control max-w-md" id="student-photo" type="file" accept="image/png,image/jpeg">
-                                <p class="field-hint">This image is previewed in your browser only; it is not uploaded or stored. Confirm final photo requirements with the Registrar.</p>
+                                <p class="field-hint">The selected photo stays on this device and is not uploaded. Confirm photo requirements with the Registrar.</p>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <legend class="px-1 text-xs font-bold text-slate-800">Review reminders</legend>
                     <label class="flex cursor-pointer items-start gap-2 text-xs leading-5 text-slate-600">
                         <input class="mt-1 accent-[#164b32]" id="local-review-confirmation" type="checkbox" required aria-describedby="local-review-error">
-                        <span>I understand this browser-only form does not verify identity, check student records, or accept an application.</span>
+                        <span>I understand that application submission is currently unavailable.</span>
                     </label>
                     <p class="field-error" id="local-review-error" data-error-for="local-review-confirmation"></p>
                     <label class="mt-3 flex cursor-pointer items-start gap-2 text-xs leading-5 text-slate-600">
@@ -109,7 +109,7 @@
                 <p class="mt-4 rounded-lg border border-[#eadba7] bg-[#fffaf0] p-3 text-xs leading-5 text-[#66531c]">Application submission is not available yet. No information or photo will be uploaded or saved.</p>
                 <div class="mt-6 flex flex-wrap justify-end gap-3">
                     <button class="button button--secondary" type="button" data-edit-application>← Return to form</button>
-                    <button class="button cursor-not-allowed opacity-60" type="button" disabled>Submission unavailable</button>
+                    <button class="button cursor-not-allowed opacity-60" type="button" disabled>Online submission unavailable</button>
                 </div>
             </section>
         </form>

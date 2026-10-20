@@ -215,37 +215,6 @@ if (applicationForm instanceof HTMLFormElement) {
     });
 }
 
-const trackingForm = document.querySelector('[data-tracking-form]');
-
-if (trackingForm instanceof HTMLFormElement) {
-    const trackingInput = trackingForm.querySelector('#tracking-number');
-    const trackingMessage = document.querySelector('[data-tracking-message]');
-
-    trackingForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        if (!trackingInput.checkValidity()) {
-            trackingInput.setAttribute('aria-invalid', 'true');
-            trackingMessage.textContent = trackingInput.validity.valueMissing
-                ? 'Enter an application reference.'
-                : 'Use 1–40 letters or numbers, with hyphens allowed after the first character.';
-            trackingMessage.hidden = false;
-            trackingInput.focus();
-            return;
-        }
-
-        trackingInput.setAttribute('aria-invalid', 'false');
-        trackingMessage.textContent = 'Lookup unavailable. This interface is not connected to application records, so no search was performed.';
-        trackingMessage.hidden = false;
-    });
-
-    trackingInput.addEventListener('input', () => {
-        trackingInput.removeAttribute('aria-invalid');
-        trackingMessage.hidden = true;
-        trackingMessage.textContent = '';
-    });
-}
-
 const workspaceLinks = [...document.querySelectorAll('[data-workspace-link]')];
 
 function updateWorkspaceNavigation() {

@@ -20,7 +20,7 @@
                         Check application status
                     </a>
                 </div>
-                <p class="mt-5 text-xs text-white/75">This interface does not accept or save applications yet.</p>
+                <p class="mt-5 text-xs text-white/75">Online application submission is currently unavailable.</p>
             </div>
 
             <div class="hero-visual hidden lg:block" aria-label="Illustration of a student application progress card">
@@ -50,7 +50,7 @@
     <section id="process" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
         <div class="section-heading">
             <div>
-                <span class="eyebrow">Planned process</span>
+                <span class="eyebrow">Application process</span>
                 <h2 class="mt-2">Know what happens next</h2>
                 <p>Designed to help students and registrar staff stay on the same page.</p>
             </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="mt-8 grid gap-4 md:grid-cols-3">
             @foreach ([
-                ['01', 'Prepare an application', 'Review the proposed fields and required information before a submission workflow is enabled.'],
+                ['01', 'Prepare an application', 'Review the information and photo requirements confirmed by the Registrar.'],
                 ['02', 'Staff review', 'Registrar staff will review submissions and request corrections before scheduling.'],
                 ['03', 'Attend and claim', 'Attend in person for identity and photo checks; follow staff guidance for production and release.'],
             ] as [$number, $title, $description])
@@ -89,8 +89,7 @@
             <aside class="rounded-2xl border border-[#eadba7] bg-[#fffaf0] p-6">
                 <p class="m-0 text-sm font-bold text-[#594719]">Service availability</p>
                 <p class="mb-0 mt-2 text-sm leading-6 text-[#74612d]">
-                    The application, tracking, and workspace screens are not yet connected to persistent records.
-                    Form checks do not verify identity. Existing ID production tools, signature devices, and printers remain separate.
+                    Online application submission and status tracking are currently unavailable. Identity is verified in person by authorized staff. Existing ID production tools, signature devices, and printers remain separate.
                 </p>
             </aside>
         </div>
