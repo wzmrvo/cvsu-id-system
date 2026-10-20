@@ -12,8 +12,19 @@
         <a class="skip-link" href="#main-content">Skip to content</a>
         @include('partials.site-header')
 
-        <main id="main-content">
-            @yield('content')
+        @php
+            $isWorkspace = request()->routeIs('student.*', 'registrar.*', 'admin.*');
+        @endphp
+
+        <main id="main-content" @class(['workspace-layout' => $isWorkspace])>
+            @if ($isWorkspace)
+                @include('partials.workspace-sidebar')
+                <div class="workspace-content">
+                    @yield('content')
+                </div>
+            @else
+                @yield('content')
+            @endif
         </main>
 
         @include('partials.site-footer')

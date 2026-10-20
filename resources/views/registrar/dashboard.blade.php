@@ -4,123 +4,86 @@
 
 @section('content')
     <div class="mx-auto max-w-7xl px-5 py-8 sm:px-8">
-        @include('partials.demo-notice')
         <section class="mt-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
                 <span class="eyebrow">Registrar workspace</span>
                 <h1 class="page-title mb-0 mt-2">Application review queue</h1>
-                <p class="page-subtitle mb-0 mt-2">Review submitted information and demonstrate status updates using fictional records.</p>
+                <p class="page-subtitle mb-0 mt-2">Review, verification, appointments, attendance, production, and release tracking.</p>
             </div>
-            <span class="rounded-full border border-[#e1e8e2] bg-white px-3 py-2 text-xs font-semibold text-slate-600">Staff demo · No live records</span>
+            <span class="rounded-full border border-[#e1e8e2] bg-white px-3 py-2 text-xs font-semibold text-slate-600">Records unavailable</span>
         </section>
 
-        <section class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label="Demo application summary">
-            @foreach ([
-                ['12', 'Pending applications', 'Needs initial review'],
-                ['4', 'Under review', 'Information being checked'],
-                ['3', 'Appointments', 'Demo schedule only'],
-                ['7', 'Ready for claiming', 'Example status count'],
-            ] as [$value, $label, $hint])
+        <p class="mt-3 text-xs leading-5 text-slate-600">This workspace has no authentication, authorized reference source, or connected application records. It must not be used to make operational decisions.</p>
+
+        <section class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label="Record availability">
+            @foreach (['Applications', 'Appointments', 'Attendance', 'Production and release'] as $label)
                 <article class="surface-card p-4">
                     <p class="m-0 text-xs font-semibold text-slate-500">{{ $label }}</p>
-                    <div class="mt-2 flex items-end justify-between gap-2">
-                        <strong class="text-2xl font-bold tracking-tight text-[#164b32]">{{ $value }}</strong>
-                        <span class="text-[10px] text-slate-500">{{ $hint }}</span>
-                    </div>
+                    <p class="mb-0 mt-2 text-lg font-bold text-slate-600">Unavailable</p>
+                    <span class="text-[10px] text-slate-500">No connected records</span>
                 </article>
             @endforeach
         </section>
 
-        <section class="surface-card mt-6 p-4 sm:p-6" aria-labelledby="queue-heading">
+        <section class="surface-card mt-6 p-5 sm:p-6" aria-labelledby="queue-heading">
             <div class="section-heading">
-                <div><h2 id="queue-heading">Recent applications</h2><p>Search and filter this local demonstration list.</p></div>
-                <span class="text-xs text-slate-500">4 fictional records</span>
+                <div><h2 id="queue-heading">Application queue</h2><p>Search and review will be enabled after authorized records and staff access are implemented.</p></div>
             </div>
-            <div class="mt-5 flex flex-col gap-3 sm:flex-row">
-                <label class="sr-only" for="application-search">Search applications</label>
-                <input class="form-control sm:max-w-sm" id="application-search" type="search" placeholder="Search name or demo number" autocomplete="off" data-application-search>
-                <label class="sr-only" for="application-status-filter">Filter by status</label>
-                <select class="form-control sm:max-w-56" id="application-status-filter" data-application-filter>
-                    <option value="">All statuses</option>
-                    <option>Submitted</option>
-                    <option>Under review</option>
-                    <option>Correction requested</option>
-                    <option>Appointment approved</option>
-                    <option>Appointment scheduled</option>
-                    <option>ID processing</option>
-                    <option>Ready for claiming</option>
-                </select>
+            <div class="empty-state mt-5 rounded-xl border border-dashed border-[#cbd8cd] bg-[#f7f9f7] p-6 text-center" role="status">
+                <h3 class="m-0 text-base font-bold text-slate-800">Application records are not connected</h3>
+                <p class="mb-0 mt-2 text-sm leading-6 text-slate-600">The queue cannot show whether applications are pending or complete. No student data is available in this workspace.</p>
             </div>
-
-            <div class="table-wrap mt-4">
-                <table class="data-table" data-application-table>
-                    <thead><tr><th scope="col">Student / application</th><th scope="col">Program</th><th scope="col">Submitted</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
-                    <tbody>
-                        <tr data-application-row data-name="Andrea Demo Student" data-number="DEMO-2026-0142" data-program="BS Information Technology" data-status="Under review" data-submitted="Oct 16, 2026">
-                            <td><strong class="block text-xs text-slate-800">Andrea Demo Student</strong><span class="mt-1 block text-[10px] text-slate-500">DEMO-2026-0142</span></td>
-                            <td>BS Information Technology</td><td>Oct 16, 2026</td>
-                            <td><span data-row-status>@include('partials.status-badge', ['status' => 'Under review'])</span></td>
-                            <td><button class="table-action" type="button" data-select-application>Review</button></td>
-                        </tr>
-                        <tr data-application-row data-name="Jordan Sample Learner" data-number="DEMO-2026-0138" data-program="BS Psychology" data-status="Submitted" data-submitted="Oct 17, 2026">
-                            <td><strong class="block text-xs text-slate-800">Jordan Sample Learner</strong><span class="mt-1 block text-[10px] text-slate-500">DEMO-2026-0138</span></td>
-                            <td>BS Psychology</td><td>Oct 17, 2026</td>
-                            <td><span data-row-status>@include('partials.status-badge', ['status' => 'Submitted'])</span></td>
-                            <td><button class="table-action" type="button" data-select-application>Review</button></td>
-                        </tr>
-                        <tr data-application-row data-name="Casey Fictional Student" data-number="DEMO-2026-0131" data-program="BS Biology" data-status="Correction requested" data-submitted="Oct 12, 2026">
-                            <td><strong class="block text-xs text-slate-800">Casey Fictional Student</strong><span class="mt-1 block text-[10px] text-slate-500">DEMO-2026-0131</span></td>
-                            <td>BS Biology</td><td>Oct 12, 2026</td>
-                            <td><span data-row-status>@include('partials.status-badge', ['status' => 'Correction requested'])</span></td>
-                            <td><button class="table-action" type="button" data-select-application>Review</button></td>
-                        </tr>
-                        <tr data-application-row data-name="Taylor Example Student" data-number="DEMO-2026-0124" data-program="BS Agriculture" data-status="Ready for claiming" data-submitted="Oct 08, 2026">
-                            <td><strong class="block text-xs text-slate-800">Taylor Example Student</strong><span class="mt-1 block text-[10px] text-slate-500">DEMO-2026-0124</span></td>
-                            <td>BS Agriculture</td><td>Oct 08, 2026</td>
-                            <td><span data-row-status>@include('partials.status-badge', ['status' => 'Ready for claiming'])</span></td>
-                            <td><button class="table-action" type="button" data-select-application>Review</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="empty-state mt-4 rounded-lg bg-[#f7f9f7] p-4 text-center text-xs text-slate-600" data-application-empty hidden>No demo applications match these filters.</p>
         </section>
 
-        <section class="mt-6 grid gap-5 lg:grid-cols-[1.1fr_.9fr]">
+        <section class="mt-6 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
             <article class="surface-card p-5 sm:p-6" aria-labelledby="application-detail-heading">
-                <div class="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                        <span class="eyebrow">Selected demo record</span>
-                        <h2 class="mb-0 mt-2 text-lg font-bold text-slate-800" id="application-detail-heading" data-detail-name>Andrea Demo Student</h2>
-                        <p class="mb-0 mt-1 text-xs text-slate-500" data-detail-number>DEMO-2026-0142 · Fictional record</p>
-                    </div>
-                    <span data-detail-status>@include('partials.status-badge', ['status' => 'Under review'])</span>
+                <span class="eyebrow">Application review</span>
+                <h2 class="mb-0 mt-2 text-lg font-bold text-slate-800" id="application-detail-heading">No application selected</h2>
+                <p class="mb-0 mt-2 text-xs leading-5 text-slate-600">Application details and authorized reference information are unavailable until records and staff authentication are connected.</p>
+                <div class="mt-5 rounded-xl bg-[#f7f9f7] p-4">
+                    <h3 class="m-0 text-sm font-bold text-slate-800">Review and verification</h3>
+                    <ul class="mb-0 mt-3 grid gap-2 p-0 text-xs leading-5 text-slate-600 [list-style:none]">
+                        <li>Compare submitted details with an authorized reference source.</li>
+                        <li>Request corrections through an approved student workflow.</li>
+                        <li>Confirm identity and inspect the photo in person.</li>
+                    </ul>
                 </div>
-                <dl class="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 rounded-xl bg-[#f7f9f7] p-4 text-xs">
-                    <div><dt class="text-slate-500">Program</dt><dd class="mb-0 mt-1 font-bold text-slate-800" data-detail-program>BS Information Technology</dd></div>
-                    <div><dt class="text-slate-500">Submitted</dt><dd class="mb-0 mt-1 font-bold text-slate-800" data-detail-submitted>Oct 16, 2026</dd></div>
-                    <div class="col-span-2"><dt class="text-slate-500">Staff reminder</dt><dd class="mb-0 mt-1 leading-5 text-slate-700">Check submitted details against authorized reference information when available. Identity must be verified in person.</dd></div>
-                </dl>
-                <p class="mt-4 rounded-lg border border-[#eadba7] bg-[#fffaf0] p-3 text-xs leading-5 text-[#66531c]">These controls update only the visible demo state. No appointment, approval, notification, or production job is created.</p>
-                <div class="mt-4 flex flex-wrap gap-2" id="appointments">
-                    <button class="button button--small" type="button" data-status-action="Appointment approved">Approve for appointment</button>
-                    <button class="button button--small button--secondary" type="button" data-status-action="Correction requested">Request correction</button>
-                    <button class="button button--small button--secondary" type="button" data-status-action="Appointment scheduled">Schedule demo appointment</button>
+                <label class="form-label mt-4" for="correction-note">Correction request note</label>
+                <textarea class="form-control" id="correction-note" rows="3" placeholder="Available after staff access and application records are implemented." disabled></textarea>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <button class="button button--small cursor-not-allowed opacity-60" type="button" disabled>Verification unavailable</button>
+                    <button class="button button--small button--secondary cursor-not-allowed opacity-60" type="button" disabled>Correction requests unavailable</button>
                 </div>
             </article>
-            <article class="surface-card p-5 sm:p-6" id="production">
-                <div class="section-heading"><div><h2>Production & release</h2><p>Tracking example only; existing tools stay in use.</p></div></div>
+
+            <article class="surface-card p-5 sm:p-6" id="appointments" aria-labelledby="appointment-management-heading">
+                <span class="eyebrow">Appointment management</span>
+                <h2 class="mb-1 mt-2 text-lg font-bold text-slate-800" id="appointment-management-heading">Appointment and attendance</h2>
+                <p class="mt-0 text-xs leading-5 text-slate-600">Scheduling and attendance cannot be recorded until connected records, staff access, and approved capacity rules are in place.</p>
+                <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div><label class="form-label" for="appointment-date">Appointment date</label><input class="form-control" id="appointment-date" type="date" disabled></div>
+                    <div><label class="form-label" for="appointment-time">Appointment time</label><input class="form-control" id="appointment-time" type="time" disabled></div>
+                </div>
+                <button class="button button--secondary button--small mt-4 cursor-not-allowed opacity-60" type="button" disabled>Scheduling unavailable</button>
+                <div class="mt-5 border-t border-[#edf0ed] pt-4">
+                    <h3 class="m-0 text-sm font-bold text-slate-800">Attendance recording</h3>
+                    <label class="mt-3 flex items-start gap-2 text-xs leading-5 text-slate-600">
+                        <input type="checkbox" disabled>
+                        <span>Student attendance confirmed in person</span>
+                    </label>
+                    <p class="mb-0 mt-3 text-xs leading-5 text-slate-500">Identity and attendance must be confirmed in person by authorized staff before any permitted production step.</p>
+                </div>
+            </article>
+
+            <article class="surface-card p-5 sm:p-6" id="production" aria-labelledby="production-heading">
+                <div class="section-heading"><div><h2 id="production-heading">Production and release</h2><p>Progress tracking is unavailable.</p></div></div>
                 <div class="mt-5 rounded-xl border border-[#e1e8e2] p-4">
-                    <p class="m-0 text-xs font-bold text-slate-800">Registrar-controlled progress</p>
-                    <p class="mb-0 mt-2 text-xs leading-6 text-slate-600">After attendance is confirmed and policy permits, staff may continue work in the university's separate ID production software and signature-capture workflow.</p>
+                    <p class="m-0 text-xs font-bold text-slate-800">Existing production tools remain in use</p>
+                    <p class="mb-0 mt-2 text-xs leading-6 text-slate-600">After attendance is confirmed and policy permits, staff continue using the university’s separate ID production software, signature-capture equipment, and printer.</p>
                 </div>
                 <div class="mt-4 flex flex-wrap gap-2">
-                    <button class="button button--small button--secondary" type="button" data-status-action="ID processing">Mark ID processing</button>
-                    <button class="button button--small" type="button" data-status-action="Ready for claiming">Mark ready for claiming</button>
-                </div>
-                <div class="mt-5 border-t border-[#edf0ed] pt-4">
-                    <h3 class="m-0 text-xs font-bold text-slate-800">Appointment examples</h3>
-                    <p class="mb-0 mt-2 text-xs leading-5 text-slate-500">A simulated schedule does not reserve staff time or notify a student. Confirm real appointments through the approved process.</p>
+                    <button class="button button--small button--secondary cursor-not-allowed opacity-60" type="button" disabled>Production tracking unavailable</button>
+                    <button class="button button--small cursor-not-allowed opacity-60" type="button" disabled>Release tracking unavailable</button>
                 </div>
             </article>
         </section>
